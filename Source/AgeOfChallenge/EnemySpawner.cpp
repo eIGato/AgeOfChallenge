@@ -1,11 +1,13 @@
 #include "EnemySpawner.h"
 
+#include "BomberEnemy.h"
 #include "Components/BoxComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "EnemyBase.h"
 #include "EnemySettings.h"
 #include "GameFramework/Character.h"
 #include "NavigationSystem.h"
+#include "StalkerEnemy.h"
 #include "WarriorEnemy.h"
 
 AEnemySpawner::AEnemySpawner()
@@ -41,14 +43,25 @@ void AEnemySpawner::BeginPlay()
 			EnemyLevelMax = Settings->DefaultEnemyLevelMax;
 	}
 
-	// No Blueprint needed: default to AWarriorEnemy when nothing is configured.
+	// No Blueprint needed: populate default entries when nothing is configured.
 	if (SpawnEntries.IsEmpty())
 	{
-		UE_LOG(LogTemp, Log, TEXT("AEnemySpawner [%s]: No SpawnEntries configured — defaulting to AWarriorEnemy."), *GetName());
-		FEnemySpawnEntry DefaultEntry;
-		DefaultEntry.EnemyClass = AWarriorEnemy::StaticClass();
-		DefaultEntry.Weight = 1.0f;
-		SpawnEntries.Add(DefaultEntry);
+		UE_LOG(LogTemp, Log, TEXT("AEnemySpawner [%s]: No SpawnEntries configured — using default mix."), *GetName());
+
+		FEnemySpawnEntry WarriorEntry;
+		WarriorEntry.EnemyClass = AWarriorEnemy::StaticClass();
+		WarriorEntry.Weight = 3.0f;
+		SpawnEntries.Add(WarriorEntry);
+
+		FEnemySpawnEntry StalkerEntry;
+		StalkerEntry.EnemyClass = AStalkerEnemy::StaticClass();
+		StalkerEntry.Weight = 2.0f;
+		SpawnEntries.Add(StalkerEntry);
+
+		FEnemySpawnEntry BomberEntry;
+		BomberEntry.EnemyClass = ABomberEnemy::StaticClass();
+		BomberEntry.Weight = 1.0f;
+		SpawnEntries.Add(BomberEntry);
 	}
 
 	// Initial delay = SpawnInterval so the level has time to load

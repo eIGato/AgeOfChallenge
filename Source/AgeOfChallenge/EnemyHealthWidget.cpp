@@ -102,7 +102,7 @@ void UEnemyHealthWidget::BuildWidgetTreeIfNeeded()
 
 	HealthBar = WidgetTree->ConstructWidget<UProgressBar>(UProgressBar::StaticClass(), TEXT("HealthBar"));
 	HealthBar->SetPercent(1.0f);
-	HealthBar->SetFillColorAndOpacity(FLinearColor::Green);
+	HealthBar->SetFillColorAndOpacity(FLinearColor::Red);
 	BarBox->AddChild(HealthBar);
 }
 
@@ -150,7 +150,4 @@ void UEnemyHealthWidget::OnHealthChanged(float CurrentHP, float MaxHP)
 
 	const float Ratio = (MaxHP > 0.0f) ? (CurrentHP / MaxHP) : 0.0f;
 	HealthBar->SetPercent(Ratio);
-
-	const FLinearColor Color = FLinearColor::LerpUsingHSV(FLinearColor::Red, FLinearColor::Green, Ratio);
-	HealthBar->SetFillColorAndOpacity(Color);
 }

@@ -49,6 +49,35 @@ public:
 	UPROPERTY(Config, EditAnywhere, Category = "Enemy|Spawner")
 	int32 DefaultEnemyLevelMax = 3;
 
+	// --- Stalker ---
+	UPROPERTY(Config, EditAnywhere, Category = "Enemy|Stalker")
+	float StalkerBaseAttackDamage = 15.0f;
+
+	UPROPERTY(Config, EditAnywhere, Category = "Enemy|Stalker")
+	float StalkerAttackRange = 600.0f;
+
+	UPROPERTY(Config, EditAnywhere, Category = "Enemy|Stalker")
+	float StalkerAttackCooldown = 2.0f;
+
+	UPROPERTY(Config, EditAnywhere, Category = "Enemy|Stalker", meta = (ToolTip = "Launch speed of spawned knife"))
+	float StalkerKnifeSpeed = 1800.0f;
+
+	// --- Bomber ---
+	UPROPERTY(Config, EditAnywhere, Category = "Enemy|Bomber")
+	float BomberBaseAttackDamage = 30.0f;
+
+	UPROPERTY(Config, EditAnywhere, Category = "Enemy|Bomber")
+	float BomberAttackRange = 1200.0f;
+
+	UPROPERTY(Config, EditAnywhere, Category = "Enemy|Bomber")
+	float BomberAttackCooldown = 3.5f;
+
+	UPROPERTY(Config, EditAnywhere, Category = "Enemy|Bomber", meta = (ToolTip = "Toss speed for arc calculation"))
+	float BomberBombTossSpeed = 900.0f;
+
+	UPROPERTY(Config, EditAnywhere, Category = "Enemy|Bomber", meta = (ToolTip = "Explosion area radius"))
+	float BomberExplosionRadius = 300.0f;
+
 	// --- Death ---
 	UPROPERTY(Config, EditAnywhere, Category = "Enemy|Death", meta = (ToolTip = "Seconds to tilt 90 degrees on death"))
 	float DeathTiltDuration = 0.5f;
