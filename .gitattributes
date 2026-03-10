@@ -1,0 +1,42 @@
+# Default: normalize line endings to LF
+* text=auto eol=lf
+
+# C++ source
+*.cpp text eol=lf
+*.h text eol=lf
+*.inl text eol=lf
+*.c text eol=lf
+
+# Config / markup
+*.ini text eol=lf
+*.json text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.xml text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+.clang-format text eol=lf
+.gitattributes text eol=lf
+
+# UE asset files — binary, no line ending conversion
+*.uasset binary
+*.umap binary
+*.upk binary
+*.pak binary
+
+# Images / binaries
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.tga binary
+*.bmp binary
+*.ico binary
+*.ttf binary
+*.otf binary
+*.wav binary
+*.mp3 binary
+*.ogg binary
+*.dll binary
+*.exe binary
+*.lib binary
+*.pdb binary
