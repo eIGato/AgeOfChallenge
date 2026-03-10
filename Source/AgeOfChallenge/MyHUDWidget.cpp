@@ -7,6 +7,7 @@
 #include "Components/CanvasPanelSlot.h"
 #include "Components/HorizontalBox.h"
 #include "Components/HorizontalBoxSlot.h"
+#include "Components/Image.h"
 #include "Components/ProgressBar.h"
 #include "Components/SizeBox.h"
 #include "Components/TextBlock.h"
@@ -176,6 +177,31 @@ void UMyHUDWidget::BuildWidgetTreeIfNeeded()
 		RestartSlot->SetAlignment(FVector2D(0.5f, 0.5f));
 		RestartSlot->SetPosition(FVector2D(0.0f, 0.0f));
 		RestartSlot->SetAutoSize(true);
+	}
+
+	// Crosshair
+	FSlateBrush CrossBrush;
+	CrossBrush.DrawAs = ESlateBrushDrawType::Image;
+	CrossBrush.TintColor = FSlateColor(FLinearColor(1.0f, 1.0f, 1.0f, 0.75f));
+
+	UImage* CrossH = WidgetTree->ConstructWidget<UImage>(UImage::StaticClass(), TEXT("CrossH"));
+	CrossH->SetBrush(CrossBrush);
+	if (UCanvasPanelSlot* CrossHSlot = Root->AddChildToCanvas(CrossH))
+	{
+		CrossHSlot->SetAnchors(FAnchors(0.5f, 0.5f));
+		CrossHSlot->SetAlignment(FVector2D(0.5f, 0.5f));
+		CrossHSlot->SetPosition(FVector2D(0.0f, 0.0f));
+		CrossHSlot->SetSize(FVector2D(20.0f, 2.0f));
+	}
+
+	UImage* CrossV = WidgetTree->ConstructWidget<UImage>(UImage::StaticClass(), TEXT("CrossV"));
+	CrossV->SetBrush(CrossBrush);
+	if (UCanvasPanelSlot* CrossVSlot = Root->AddChildToCanvas(CrossV))
+	{
+		CrossVSlot->SetAnchors(FAnchors(0.5f, 0.5f));
+		CrossVSlot->SetAlignment(FVector2D(0.5f, 0.5f));
+		CrossVSlot->SetPosition(FVector2D(0.0f, 0.0f));
+		CrossVSlot->SetSize(FVector2D(2.0f, 20.0f));
 	}
 }
 
